@@ -10,7 +10,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
 /* ── Animation variants ── */
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 50 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
@@ -18,10 +18,11 @@ const fadeUp = {
   })
 };
 
-const staggerContainer = {
+const staggerContainer: any = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
 };
+
 
 /* ── Animated counter ── */
 function Counter({ to, suffix = "" }: { to: number | string; suffix?: string }) {
