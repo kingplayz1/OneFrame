@@ -51,6 +51,8 @@ async function hasDiscordWebAdminRole(accessToken: string): Promise<boolean> {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  trustHost: true,
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET || "super-secure-random-secret-key-12345",
   adapter: PrismaAdapter(prisma as any),
   providers: [
     DiscordProvider({
