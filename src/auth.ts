@@ -51,7 +51,7 @@ async function hasDiscordWebAdminRole(accessToken: string): Promise<boolean> {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma as any),
   providers: [
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID,

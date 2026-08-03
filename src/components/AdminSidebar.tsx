@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogOut, Home, Grid, Users, Clock, Mail } from "lucide-react";
+import { LogOut, Home, Grid, Users, Clock, Mail, Settings } from "lucide-react";
 
 export default function AdminSidebar() {
   const pathname = usePathname();
@@ -13,7 +13,9 @@ export default function AdminSidebar() {
     { name: "Personnel", href: "/admin/team", icon: <Users size={18} /> },
     { name: "Timeline", href: "/admin/timeline", icon: <Clock size={18} /> },
     { name: "Transmissions", href: "/admin/contacts", icon: <Mail size={18} /> },
+    { name: "Site Settings", href: "/admin/settings", icon: <Settings size={18} /> },
   ];
+
 
   return (
     <aside className="w-full md:w-72 bg-black/80 backdrop-blur-xl border-r border-white/10 p-8 flex flex-col z-10 shrink-0">

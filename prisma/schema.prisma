@@ -5,6 +5,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/generated/client"
 }
 
 model Account {
@@ -112,4 +113,21 @@ model ContactSubmission {
   details     String
   status      String   @default("UNREAD")
   createdAt   DateTime @default(now())
+}
+
+model SiteConfig {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  key           String  @unique  // e.g. "contact"
+  // Contact Info
+  address       String?
+  contactEmail  String?
+  phone         String?
+  discordUrl    String?
+  discordLabel  String?
+  instagramUrl  String?
+  instagramLabel String?
+  youtubeUrl    String?
+  youtubeLabel  String?
+
+  @@map("site_configs")
 }

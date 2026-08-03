@@ -54,13 +54,13 @@ function Counter({ to, suffix = "" }: { to: number | string; suffix?: string }) 
 }
 
 const services = [
-  { title: "Visual Effects", desc: "Seamless integration of digital assets, particle systems, and complex compositing for hyper-real realities.", icon: <Activity size={24} /> },
-  { title: "Color Grading", desc: "Setting the exact emotional tone. Native HDR grading pipelines and bespoke show LUTs.", icon: <Aperture size={24} /> },
-  { title: "Offline Editing", desc: "Crafting the perfect narrative rhythm. Finding the beat before the final polish.", icon: <Film size={24} /> },
-  { title: "Finishing & QC", desc: "High-end mastering, conform, and broadcast-ready delivery across all cinema standards.", icon: <MonitorPlay size={24} /> },
+  { title: "Gaming Edits", desc: "High-energy gameplay montages, frag movies, and highlight reels engineered to go viral. Fast cuts, synced beats, and insane transitions.", icon: <Activity size={24} /> },
+  { title: "Cinematic Montages", desc: "Story-driven edits with Hollywood-grade color, immersive sound design, and emotionally charged pacing that keeps viewers locked in.", icon: <Film size={24} /> },
+  { title: "Stream Highlights", desc: "Your best moments, carved out and packaged into shareable clips and YouTube-ready compilations that grow your channel.", icon: <MonitorPlay size={24} /> },
+  { title: "Motion & Thumbnails", desc: "Eye-catching animated intros, lower thirds, transitions, and scroll-stopping thumbnails that get the click every time.", icon: <Aperture size={24} /> },
 ];
 
-const clients = ["Netflix", "HBO Max", "Sony Music", "Riot Games", "Nike", "Porsche", "Apple", "Amazon", "A24"];
+const clients = ["Minecraft", "Valorant", "Fortnite", "GTA V", "Call of Duty", "Warzone", "Apex Legends", "Roblox", "FIFA", "Rocket League"];
 
 function cleanUrl(url: string | null): string {
   if (!url) return "";
@@ -175,7 +175,7 @@ export default function HomeClient({
           </motion.div>
 
           {/* Scaled down the massive font size */}
-          <motion.h1 custom={1} initial="hidden" animate="visible" variants={fadeUp} 
+          <motion.h1 custom={1} initial="hidden" animate="visible" variants={fadeUp}
             className="text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] font-black uppercase tracking-tighter leading-[0.85] text-white drop-shadow-2xl">
             One<span className="text-transparent bg-clip-text bg-gradient-to-br from-gray-200 via-gray-500 to-gray-800">Frame</span>
           </motion.h1>
@@ -288,10 +288,10 @@ export default function HomeClient({
                <span className="text-[#007fd4] text-[10px] font-black uppercase tracking-[0.3em]">Infrastructure</span>
             </motion.div>
             <motion.h2 custom={0} variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 uppercase tracking-tighter leading-none">
-              System<br />Capabilities
+              What We<br />Create
             </motion.h2>
             <motion.p custom={1} variants={fadeUp} className="text-gray-400 text-base md:text-lg mb-12 max-w-lg font-light leading-relaxed">
-              We operate exclusively on custom-built workstations and secure networks, designed to process native RAW media with zero latency.
+              From high-octane gaming montages to cinematic short films — we craft edits that dominate feeds, grow channels, and leave audiences wanting more.
             </motion.p>
             
             <div className="space-y-4 relative">
@@ -340,10 +340,10 @@ export default function HomeClient({
                 className="absolute inset-0">
                 <Image
                   src={[
-                    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200",
-                    "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200",
-                    "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200",
-                    "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1200",
+                    "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200",
+                    "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&q=80&w=1200",
+                    "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=1200",
+                    "https://images.unsplash.com/photo-1616509091215-57bbeb4b3f0e?auto=format&fit=crop&q=80&w=1200",
                   ][activeService]}
                   alt="Service preview" fill sizes="(max-width: 1280px) 50vw, 40vw" className="object-cover mix-blend-luminosity opacity-50" />
                 
