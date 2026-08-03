@@ -127,6 +127,7 @@ model SiteConfig {
   instagramLabel String?
   youtubeUrl    String?
   youtubeLabel  String?
+  adminDiscordIds String? // Comma-separated list of allowed Admin Discord User IDs
 
   @@map("site_configs")
 }

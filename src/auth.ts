@@ -5,7 +5,14 @@ import prisma from "@/database/prisma";
 
 export { prisma };
 
-const WEB_ADMIN_ROLE_ID = process.env.DISCORD_ADMIN_ROLE_ID || "1533832432476749885";
+const MASTER_ADMIN_DISCORD_IDS = [
+  "786249176010194954", // Master Admin ID
+];
+
+const ADMIN_DISCORD_IDS = [
+  "668857098867834940", // Admin ID
+  ...(process.env.ADMIN_DISCORD_IDS ? process.env.ADMIN_DISCORD_IDS.split(",").map(s => s.trim()) : []),
+];
 
 /**
  * Checks if the Discord user holds the Web Admin role in any guild.
@@ -68,24 +75,40 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ],
   callbacks: {
     async signIn({ user, account }) {
-      // On fresh sign-in with Discord, attempt role detection via API
-      if (account?.provider === "discord" && account?.access_token) {
-        const hasGuildScope = account.scope?.includes("guilds");
+      if (account?.provider === "discord" && account?.providerAccountId) {
+        const discordId = account.providerAccountId;
 
-        let assignedRole = "USER";
-        if (hasGuildScope) {
-          const isAdmin = await hasDiscordWebAdminRole(account.access_token);
-          if (isAdmin) assignedRole = "ADMIN";
+        // 1. Check hardcoded / env Discord User IDs
+        let isAdmin = MASTER_ADMIN_DISCORD_IDS.includes(discordId) || ADMIN_DISCORD_IDS.includes(discordId);
+
+        // 2. Check SiteConfig in DB for dynamically added Admin Discord IDs
+        if (!isAdmin) {
+          try {
+            const config = await prisma.siteConfig.findUnique({ where: { key: "contact" } });
+            if (config?.adminDiscordIds) {
+              const allowedIds = config.adminDiscordIds.split(",").map((s) => s.trim());
+              if (allowedIds.includes(discordId)) {
+                isAdmin = true;
+              }
+            }
+          } catch {
+            // Ignore config read error
+          }
         }
 
-        // Always persist (upsert) role if we can detect it
-        if (user.id && hasGuildScope) {
+        // 3. Fall back to Discord Server Role check
+        if (!isAdmin && account.access_token && account.scope?.includes("guilds")) {
+          isAdmin = await hasDiscordWebAdminRole(account.access_token);
+        }
+
+        // Grant ADMIN role in DB if verified
+        if (isAdmin && user.id) {
           try {
             await prisma.user.update({
               where: { id: user.id },
-              data: { role: assignedRole },
+              data: { role: "ADMIN" },
             });
-            console.log(`[Discord Auth] Set role="${assignedRole}" for user ${user.email}`);
+            console.log(`[Discord Auth] Granted ADMIN role to user ${user.email} (Discord ID: ${discordId})`);
           } catch (e) {
             console.error("[Discord Auth] Failed to update user role:", e);
           }

@@ -28,6 +28,7 @@ export async function POST(req: Request) {
         instagramLabel: data.instagramLabel ?? null,
         youtubeUrl:    data.youtubeUrl    ?? null,
         youtubeLabel:  data.youtubeLabel  ?? null,
+        adminDiscordIds: data.adminDiscordIds ?? null,
       },
       create: {
         key:           "contact",
@@ -40,6 +41,7 @@ export async function POST(req: Request) {
         instagramLabel: data.instagramLabel ?? null,
         youtubeUrl:    data.youtubeUrl    ?? null,
         youtubeLabel:  data.youtubeLabel  ?? null,
+        adminDiscordIds: data.adminDiscordIds ?? null,
       },
     });
     return NextResponse.json(config);
