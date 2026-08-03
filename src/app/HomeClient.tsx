@@ -78,11 +78,11 @@ type FeaturedProject = {
   editor?: { name: string; slug: string } | null;
 }
 
-export default function HomeClient({ 
-  featuredProjects, 
-  teamCount, 
-  projectCount 
-}: { 
+export default function HomeClient({
+  featuredProjects,
+  teamCount,
+  projectCount
+}: {
   featuredProjects: FeaturedProject[],
   teamCount: number,
   projectCount: number
@@ -122,7 +122,7 @@ export default function HomeClient({
 
   return (
     <div className="w-full bg-[#030303] text-white selection:bg-[#007fd4] selection:text-white font-sans">
-      
+
       {/* ── Global Cinematic Grain ── */}
       <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.04] mix-blend-overlay"
         style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/stardust.png")' }} />
@@ -167,11 +167,11 @@ export default function HomeClient({
 
         {/* Hero Central Content */}
         <motion.div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center mt-12" style={{ opacity: heroOpacity }}>
-          
+
           <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp} className="mb-6 flex items-center justify-center gap-3">
-             <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#007fd4]" />
-             <span className="text-[#007fd4] text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">Post-Production Studio</span>
-             <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#007fd4]" />
+            <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#007fd4]" />
+            <span className="text-[#007fd4] text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">Post-Production Studio</span>
+            <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#007fd4]" />
           </motion.div>
 
           {/* Scaled down the massive font size */}
@@ -197,7 +197,7 @@ export default function HomeClient({
                 Explore Vault <Play size={16} className="fill-current" />
               </span>
             </Link>
-            
+
             <Link href="/contact"
               className="group flex items-center gap-3 bg-transparent border border-white/20 hover:border-white/60 hover:bg-white/5 text-white font-black uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 backdrop-blur-md">
               Book Studio <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -206,10 +206,10 @@ export default function HomeClient({
         </motion.div>
 
         {/* Scroll Indicator */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 1 }} 
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 1 }}
           className="absolute bottom-32 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-50">
-           <span className="text-[9px] uppercase tracking-[0.3em] font-mono">Scroll</span>
-           <ChevronDown size={16} className="animate-bounce" />
+          <span className="text-[9px] uppercase tracking-[0.3em] font-mono">Scroll</span>
+          <ChevronDown size={16} className="animate-bounce" />
         </motion.div>
 
         {/* Timeline UI (Bottom Edge) */}
@@ -258,13 +258,13 @@ export default function HomeClient({
       <div className="w-full bg-[#030303] border-b border-white/5 py-10 overflow-hidden relative z-10">
         <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-[#030303] to-transparent z-10" />
         <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-[#030303] to-transparent z-10" />
-        
+
         <div className="flex whitespace-nowrap animate-ticker gap-24 px-8 opacity-30 hover:opacity-60 transition-opacity duration-500">
           {[1, 2, 3].map((_, idx) => (
             <div key={idx} className="flex gap-24 items-center">
               {clients.map(c => (
-                <span key={c} className="text-2xl md:text-3xl font-black uppercase tracking-[0.2em] text-transparent" 
-                      style={{ WebkitTextStroke: '1px rgba(255,255,255,0.8)' }}>
+                <span key={c} className="text-2xl md:text-3xl font-black uppercase tracking-[0.2em] text-transparent"
+                  style={{ WebkitTextStroke: '1px rgba(255,255,255,0.8)' }}>
                   {c}
                 </span>
               ))}
@@ -279,13 +279,13 @@ export default function HomeClient({
       <section className="py-24 md:py-36 relative z-10 overflow-hidden">
         {/* Abstract Ambient Glow */}
         <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-[#007fd4]/5 blur-[200px] rounded-full pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 xl:grid-cols-2 gap-16 md:gap-20 items-center">
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="relative z-10">
             <motion.div variants={fadeUp} custom={0} className="flex items-center gap-4 mb-6">
-               <div className="w-12 h-1 bg-[#007fd4]" />
-               <span className="text-[#007fd4] text-[10px] font-black uppercase tracking-[0.3em]">Infrastructure</span>
+              <div className="w-12 h-1 bg-[#007fd4]" />
+              <span className="text-[#007fd4] text-[10px] font-black uppercase tracking-[0.3em]">Infrastructure</span>
             </motion.div>
             <motion.h2 custom={0} variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 uppercase tracking-tighter leading-none">
               What We<br />Create
@@ -293,12 +293,12 @@ export default function HomeClient({
             <motion.p custom={1} variants={fadeUp} className="text-gray-400 text-base md:text-lg mb-12 max-w-lg font-light leading-relaxed">
               From high-octane gaming montages to cinematic short films — we craft edits that dominate feeds, grow channels, and leave audiences wanting more.
             </motion.p>
-            
+
             <div className="space-y-4 relative">
               {/* Active glow indicator line */}
-              <div 
-                className="absolute left-0 w-1 bg-[#007fd4] rounded-full transition-all duration-500 ease-out z-10 shadow-[0_0_15px_#007fd4]" 
-                style={{ top: `${activeService * 25}%`, height: '25%' }} 
+              <div
+                className="absolute left-0 w-1 bg-[#007fd4] rounded-full transition-all duration-500 ease-out z-10 shadow-[0_0_15px_#007fd4]"
+                style={{ top: `${activeService * 25}%`, height: '25%' }}
               />
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-white/5 rounded-full" />
 
@@ -316,7 +316,7 @@ export default function HomeClient({
                   <div className="flex-1">
                     <h3 className={`text-lg font-black uppercase tracking-wider transition-colors duration-300 
                       ${activeService === i ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>{s.title}</h3>
-                    
+
                     <div className={`grid transition-all duration-500 ease-in-out overflow-hidden
                       ${activeService === i ? 'grid-rows-[1fr] opacity-100 mt-2' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
                       <p className="text-gray-400 text-sm md:text-base font-light leading-relaxed overflow-hidden">
@@ -333,10 +333,10 @@ export default function HomeClient({
           <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden hidden md:block border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.8)] bg-zinc-950">
             <AnimatePresence mode="wait">
               <motion.div key={activeService}
-                initial={{ opacity: 0, filter: 'blur(10px)', scale: 1.05 }} 
+                initial={{ opacity: 0, filter: 'blur(10px)', scale: 1.05 }}
                 animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
-                exit={{ opacity: 0, filter: 'blur(10px)' }} 
-                transition={{ duration: 0.8, ease: "easeOut" }} 
+                exit={{ opacity: 0, filter: 'blur(10px)' }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 className="absolute inset-0">
                 <Image
                   src={[
@@ -346,17 +346,17 @@ export default function HomeClient({
                     "https://images.unsplash.com/photo-1616509091215-57bbeb4b3f0e?auto=format&fit=crop&q=80&w=1200",
                   ][activeService]}
                   alt="Service preview" fill sizes="(max-width: 1280px) 50vw, 40vw" className="object-cover mix-blend-luminosity opacity-50" />
-                
+
                 {/* Vignettes & Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent opacity-90" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#007fd4]/20 to-transparent mix-blend-overlay" />
-                
+
                 {/* HUD Elements on Image */}
                 <div className="absolute top-8 left-8 flex flex-col gap-2 opacity-50">
-                   <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center">
-                     <div className="w-1 h-1 bg-white rounded-full" />
-                   </div>
-                   <div className="w-px h-12 bg-white/30 ml-4" />
+                  <div className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center">
+                    <div className="w-1 h-1 bg-white rounded-full" />
+                  </div>
+                  <div className="w-px h-12 bg-white/30 ml-4" />
                 </div>
 
                 <div className="absolute bottom-10 left-10 right-10">
@@ -382,7 +382,7 @@ export default function HomeClient({
               <span className="text-white text-[10px] font-black uppercase tracking-[0.3em]">The Vault</span>
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter text-white">
-              Featured Work
+              Projects
             </motion.h2>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
@@ -395,54 +395,54 @@ export default function HomeClient({
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           {featuredProjects.length > 0 ? featuredProjects.map((project, i) => (
             <Link key={project.id} href={`/projects`} passHref legacyBehavior>
-                <motion.a initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: i * 0.15 }}
-                  className={`group relative bg-zinc-900 rounded-[1.5rem] overflow-hidden cursor-pointer block border border-white/10 hover:border-white/30 transition-colors shadow-2xl
+              <motion.a initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: i * 0.15 }}
+                className={`group relative bg-zinc-900 rounded-[1.5rem] overflow-hidden cursor-pointer block border border-white/10 hover:border-white/30 transition-colors shadow-2xl
                     ${i % 2 === 1 ? 'md:mt-16' : ''} aspect-[16/10]`}>
-                  
-                  {project.thumbnailUrl ? (
-                    <Image src={cleanUrl(project.thumbnailUrl)} alt={project.title} fill sizes="(max-width: 768px) 100vw, 50vw" 
-                           className="object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center text-gray-700 bg-zinc-950"><Film size={48} /></div>
-                  )}
-                  
-                  {/* Gradients */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#007fd4]/20 to-transparent opacity-0 group-hover:opacity-100 mix-blend-overlay transition-opacity duration-500" />
-                  
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-95 group-hover:scale-100">
-                    <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.2)]">
-                      <Play size={24} className="ml-1 fill-current" />
-                    </div>
-                  </div>
 
-                  <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                    <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      <p className="text-[#007fd4] text-[10px] uppercase tracking-[0.3em] font-black mb-2 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#007fd4] rounded-full" />
-                        {project.category}
-                      </p>
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white uppercase tracking-tighter truncate leading-none mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400">
-                        {project.title}
-                      </h3>
-                      {project.editor && (
-                          <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                            Cut by <span className="text-white">{project.editor.name}</span>
-                          </p>
-                      )}
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500 delay-100 shrink-0">
-                       <ArrowUpRight size={18} />
-                    </div>
+                {project.thumbnailUrl ? (
+                  <Image src={cleanUrl(project.thumbnailUrl)} alt={project.title} fill sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-700 bg-zinc-950"><Film size={48} /></div>
+                )}
+
+                {/* Gradients */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#007fd4]/20 to-transparent opacity-0 group-hover:opacity-100 mix-blend-overlay transition-opacity duration-500" />
+
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-95 group-hover:scale-100">
+                  <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                    <Play size={24} className="ml-1 fill-current" />
                   </div>
-                </motion.a>
+                </div>
+
+                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <p className="text-[#007fd4] text-[10px] uppercase tracking-[0.3em] font-black mb-2 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-[#007fd4] rounded-full" />
+                      {project.category}
+                    </p>
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white uppercase tracking-tighter truncate leading-none mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400">
+                      {project.title}
+                    </h3>
+                    {project.editor && (
+                      <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        Cut by <span className="text-white">{project.editor.name}</span>
+                      </p>
+                    )}
+                  </div>
+                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500 delay-100 shrink-0">
+                    <ArrowUpRight size={18} />
+                  </div>
+                </div>
+              </motion.a>
             </Link>
           )) : (
-              <div className="col-span-2 text-center text-gray-500 py-20 border border-white/5 rounded-[1.5rem] bg-zinc-900/50">
-                <Film size={40} className="mx-auto mb-4 opacity-50" />
-                <p className="font-mono text-sm uppercase tracking-widest">No featured projects yet.</p>
-              </div>
+            <div className="col-span-2 text-center text-gray-500 py-20 border border-white/5 rounded-[1.5rem] bg-zinc-900/50">
+              <Film size={40} className="mx-auto mb-4 opacity-50" />
+              <p className="font-mono text-sm uppercase tracking-widest">No featured projects yet.</p>
+            </div>
           )}
         </div>
       </section>
@@ -473,17 +473,17 @@ export default function HomeClient({
       <section className="py-24 px-6 max-w-5xl mx-auto relative z-10">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
           className="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-zinc-900 to-black border border-white/10 p-10 md:p-16 flex flex-col md:flex-row gap-12 items-center shadow-2xl">
-          
+
           {/* Internal Glows */}
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#007fd4]/10 blur-[100px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#9c27b0]/10 blur-[100px] rounded-full pointer-events-none" />
-          
+
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
 
           <div className="md:w-[55%] relative z-10">
             <div className="flex items-center gap-4 mb-6">
-               <div className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]" />
-               <span className="text-white text-[10px] font-black uppercase tracking-[0.3em]">Network Open</span>
+              <div className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]" />
+              <span className="text-white text-[10px] font-black uppercase tracking-[0.3em]">Network Open</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 uppercase tracking-tighter leading-none text-white">
               Initiate<br />Contact
@@ -507,12 +507,12 @@ export default function HomeClient({
             <Link href="/contact"
               className="relative w-full max-w-[16rem] aspect-square bg-[#007fd4] hover:bg-white rounded-full flex flex-col items-center justify-center p-10 transition-all duration-700 group shadow-[0_0_40px_rgba(0,127,212,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)] overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay" />
-              
+
               <div className="relative z-10 flex flex-col items-center text-white group-hover:text-black transition-colors duration-500">
                 <Plus size={36} className="mb-3 group-hover:rotate-90 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                <span className="text-2xl font-black uppercase tracking-tighter mb-1 text-center leading-none">Book<br/>Studio</span>
+                <span className="text-2xl font-black uppercase tracking-tighter mb-1 text-center leading-none">Book<br />Studio</span>
               </div>
-              
+
               {/* Spinning text ring - pure css animation */}
               <div className="absolute inset-3 border border-white/20 group-hover:border-black/10 rounded-full animate-[spin_10s_linear_infinite]" />
               <div className="absolute inset-6 border border-white/10 group-hover:border-black/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />

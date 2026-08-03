@@ -22,21 +22,21 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-const TARGET_EMAIL = "bhaktaprince094@gmail.com";
+const TARGET_EMAILS = ["bhaktaprince094@gmail.com", "saifullahkhan0994@gmail.com"];
 
 async function main() {
   const prisma = new PrismaClient();
   try {
-    const result = await prisma.user.updateMany({
-      where: { email: TARGET_EMAIL },
-      data: { role: "ADMIN" },
-    });
-
-    if (result.count === 0) {
-      console.log(`❌ No user found with email: ${TARGET_EMAIL}`);
-      console.log("Make sure you have signed in at least once via Discord on the live site.");
-    } else {
-      console.log(`✅ Successfully promoted ${TARGET_EMAIL} to ADMIN (${result.count} record updated).`);
+    for (const email of TARGET_EMAILS) {
+      const result = await prisma.user.updateMany({
+        where: { email },
+        data: { role: "ADMIN" },
+      });
+      if (result.count === 0) {
+        console.log(`❌ No user found with email: ${email}`);
+      } else {
+        console.log(`✅ Successfully promoted ${email} to ADMIN (${result.count} record updated).`);
+      }
     }
   } finally {
     await prisma.$disconnect();
