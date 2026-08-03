@@ -1,0 +1,115 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Account {
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String  @map("user_id") @db.ObjectId
+  type               String
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id") @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  role          String    @default("USER") // Admin role check
+  accounts      Account[]
+  sessions      Session[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// Custom Studio Models
+
+model Project {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  description  String?
+  category     String   // Music Video, Commercial, Short Film
+  videoUrl     String?  // YouTube/Vimeo link
+  thumbnailUrl String?
+  status       String   @default("PUBLISHED")
+  editorId     String?  @db.ObjectId
+  editor       Editor?  @relation(fields: [editorId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Editor {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  slug         String   @unique // URL-friendly ID e.g. "kingplayz"
+  role         String
+  bio          String?  // Long-form bio text
+  software     String[] // e.g., ["Premiere Pro", "DaVinci Resolve"]
+  specialties  String[] // e.g., ["Color Grading", "VFX"]
+  imageUrl     String?
+  coverImageUrl String? // Hero banner for portfolio page
+  showreelUrl  String?
+  instagramUrl String?
+  youtubeUrl   String?
+  twitterUrl   String?
+  yearsExp     Int?     // Years of experience
+  projectCount Int?     // Number of projects completed
+  location     String?  // e.g., "Los Angeles, CA"
+  projects     Project[]
+  createdAt    DateTime @default(now())
+}
+
+model TimelineEvent {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  year        String
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model ContactSubmission {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  email       String
+  details     String
+  status      String   @default("UNREAD")
+  createdAt   DateTime @default(now())
+}
