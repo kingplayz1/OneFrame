@@ -48,7 +48,7 @@ export default function Footer() {
           <h4 className="text-white font-semibold uppercase tracking-wider mb-6">Contact</h4>
           <ul className="space-y-3">
             <li className="text-gray-400">New Delhi, India</li>
-            <li><a href="mailto:hello@oneframestudios.com" className="text-gray-400 hover:text-white transition-colors">hello@oneframestudios.com</a></li>
+            <li><a href="mailto:Saifullahkhan0994@gmail.com" className="text-gray-400 hover:text-white transition-colors">Saifullahkhan0994@gmail.com</a></li>
             <li><Link href="/#contact" className="text-brand-accent font-medium hover:text-white transition-colors">Start a Project</Link></li>
           </ul>
         </div>
