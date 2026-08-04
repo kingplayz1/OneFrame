@@ -14,6 +14,8 @@ const ADMIN_DISCORD_IDS = [
   ...(process.env.ADMIN_DISCORD_IDS ? process.env.ADMIN_DISCORD_IDS.split(",").map(s => s.trim()) : []),
 ];
 
+const WEB_ADMIN_ROLE_ID = process.env.DISCORD_WEB_ADMIN_ROLE_ID || "1533832432476749885";
+
 /**
  * Checks if the Discord user holds the Web Admin role in any guild.
  * Only called on fresh sign-in (when a new access_token is issued).
