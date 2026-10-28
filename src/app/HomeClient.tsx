@@ -99,10 +99,10 @@ export default function HomeClient({
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.02]);
 
   const stats = [
-    { value: `${projectCount || 500}+`, label: "Projects Mastered" },
-    { value: `${teamCount || 10}`, label: "Elite Artists" },
-    { value: "8K+", label: "Native Resolution" },
-    { value: "0ms", label: "Creative Friction" },
+    { value: `${projectCount && projectCount > 0 ? projectCount : 50}+`, label: "Projects Mastered" },
+    { value: `${teamCount && teamCount > 0 ? teamCount : 3}`, label: "Elite Artists" },
+    { value: "4K+", label: "Native Resolution" },
+    { value: "< 24h", label: "Typical Turnaround" },
   ];
 
   /* Timecode */
@@ -394,7 +394,7 @@ export default function HomeClient({
 
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           {featuredProjects.length > 0 ? featuredProjects.map((project, i) => (
-            <Link key={project.id} href={`/projects`} passHref legacyBehavior>
+            <Link key={project.id} href={`/projects?project=${project.id}`} passHref legacyBehavior>
               <motion.a initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: i * 0.15 }}
                 className={`group relative bg-zinc-900 rounded-[1.5rem] overflow-hidden cursor-pointer block border border-white/10 hover:border-white/30 transition-colors shadow-2xl
                     ${i % 2 === 1 ? 'md:mt-16' : ''} aspect-[16/10]`}>

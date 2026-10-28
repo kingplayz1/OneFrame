@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Play, Film, X, Search, Layers, Gamepad2, Megaphone,
@@ -101,10 +102,22 @@ function CategoryIcon({ category, size = 14 }: { category: string; size?: number
 }
 
 export default function ProjectsClient({ projects }: { projects: Project[] }) {
+  const searchParams = useSearchParams();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortBy, setSortBy] = useState<"newest" | "title" | "editor">("newest");
+
+  // Auto-open project from URL param (e.g., ?project=<id>)
+  useEffect(() => {
+    const projectId = searchParams.get("project");
+    if (projectId) {
+      const project = projects.find((p) => p.id === projectId);
+      if (project) {
+        setSelectedProject(project);
+      }
+    }
+  }, [searchParams, projects]);
 
   // Only published projects
   const publishedProjects = useMemo(

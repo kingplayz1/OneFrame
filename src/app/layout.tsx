@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import SoundEffects from "@/components/SoundEffects";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,10 +34,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <meta name="google-site-verification" content="googlec7ddfc15275a4757" />
+      </head>
       <body className={`${inter.className} antialiased bg-[#050505] text-[#f5f5f5] min-h-full flex flex-col cursor-none`}>
         {/* Global Cinematic Film Grain */}
         <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-difference" style={{ backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png')", backgroundSize: "200px 200px" }}></div>
-        
+
         <SoundEffects />
         <CustomCursor />
         <Navbar />
@@ -44,6 +48,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

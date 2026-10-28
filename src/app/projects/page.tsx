@@ -1,4 +1,5 @@
 import { prisma } from "@/auth";
+import { Suspense } from "react";
 import ProjectsClient from "./ProjectsClient";
 
 export const revalidate = 60;
@@ -12,6 +13,20 @@ export const metadata = {
     images: [{ url: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200" }],
   }
 };
+
+type ProjectType = {
+  id: string;
+  title: string;
+  category: string;
+  videoUrl: string | null;
+  thumbnailUrl: string | null;
+  status: string;
+  editor: { name: string; slug: string } | null;
+};
+
+function ProjectsClientWrapper({ projects }: { projects: ProjectType[] }) {
+  return <ProjectsClient projects={projects} />;
+}
 
 export default async function ProjectsPage() {
   let projects: {
@@ -41,5 +56,9 @@ export default async function ProjectsPage() {
     console.error("Failed to fetch projects:", e);
   }
 
-  return <ProjectsClient projects={projects} />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#030303] flex items-center justify-center"><div className="text-gray-400">Loading projects...</div></div>}>
+      <ProjectsClientWrapper projects={projects} />
+    </Suspense>
+  );
 }
